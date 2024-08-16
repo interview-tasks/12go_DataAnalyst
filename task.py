@@ -16,7 +16,7 @@ db_name = os.getenv('DB_NAME')
 # Create the SQLAlchemy engine
 engine = create_engine(f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}")
 
-# Retrieve booking data
+# Retrieve booking data for 2019 and 2023
 query = """
 SELECT
     bid,
@@ -26,7 +26,8 @@ SELECT
 FROM
     analytic_test_booking
 WHERE
-    YEAR(paidon) IN (2019, 2023)
+    paidon BETWEEN '2019-01-01' AND '2019-12-31'
+    OR paidon BETWEEN '2023-01-01' AND '2023-12-31'
 """
 booking_data = pd.read_sql(query, engine)
 
