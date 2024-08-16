@@ -1,17 +1,20 @@
-import mysql.connector
+from dotenv import load_dotenv
+import os
+from sqlalchemy import create_engine
 import pandas as pd
 
-# Database connection details
-db_config = {
-    'host': 'hrtest.12go.asia',
-    'port': 20062,
-    'user': 'hrtest-ro',
-    'password': 'q2FTQezFKRmHp',
-    'database': '12go'
-}
+# Load environment variables from .env file
+load_dotenv()
 
-# Connect to the database
-connection = mysql.connector.connect(**db_config)
+# Database connection details from environment variables
+db_host = os.getenv('DB_HOST')
+db_port = os.getenv('DB_PORT')
+db_user = os.getenv('DB_USER')
+db_password = os.getenv('DB_PASSWORD')
+db_name = os.getenv('DB_NAME')
+
+# Create the SQLAlchemy engine
+engine = create_engine(f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}")
 
 # Retrieve booking data
 query = """
@@ -25,10 +28,7 @@ FROM
 WHERE
     YEAR(paidon) IN (2019, 2023)
 """
-booking_data = pd.read_sql(query, connection)
-
-# Close the connection
-connection.close()
+booking_data = pd.read_sql(query, engine)
 
 # Calculate EPS
 booking_data['EPS'] = booking_data['total_usd'] / booking_data['seats']
