@@ -1,3 +1,4 @@
+from fpdf import FPDF
 import matplotlib.pyplot as plt
 import pandas as pd
 from sqlalchemy import create_engine
@@ -59,7 +60,8 @@ plt.xlabel('Vehicle Class ID')
 plt.ylabel('Average EPS')
 plt.legend()
 plt.grid(True)
-plt.show()
+plt.savefig("plot_1.png")
+plt.close()
 
 # 2. Total Net Revenue by Vehicle Class
 plt.figure(figsize=(14, 8))
@@ -71,7 +73,8 @@ plt.xlabel('Vehicle Class ID')
 plt.ylabel('Total Net Revenue (USD)')
 plt.legend()
 plt.grid(True)
-plt.show()
+plt.savefig("plot_2.png")
+plt.close()
 
 # 3. Seat Occupancy Comparison between 2019 and 2023
 plt.figure(figsize=(14, 8))
@@ -83,7 +86,8 @@ plt.xlabel('Vehicle Class ID')
 plt.ylabel('Total Seats')
 plt.legend()
 plt.grid(True)
-plt.show()
+plt.savefig("plot_3.png")
+plt.close()
 
 # 4. Refund Impact on Net Revenue by Vehicle Class
 grouped['net_revenue_after_refund'] = grouped['netprice_usd'] - grouped['refund_usd']
@@ -96,7 +100,8 @@ plt.xlabel('Vehicle Class ID')
 plt.ylabel('Net Revenue After Refund (USD)')
 plt.legend()
 plt.grid(True)
-plt.show()
+plt.savefig("plot_4.png")
+plt.close()
 
 # 5. EPS Growth Comparison between 2019 and 2023
 grouped['eps_growth'] = grouped.groupby('vehclass_id')['eps'].pct_change().fillna(0)
@@ -107,7 +112,8 @@ plt.title('EPS Growth by Vehicle Class from 2019 to 2023')
 plt.xlabel('Vehicle Class ID')
 plt.ylabel('EPS Growth (%)')
 plt.grid(True)
-plt.show()
+plt.savefig("plot_5.png")
+plt.close()
 
 # 6. Average Trip Duration by Vehicle Class
 plt.figure(figsize=(14, 8))
@@ -119,7 +125,8 @@ plt.xlabel('Vehicle Class ID')
 plt.ylabel('Average Trip Duration (Minutes)')
 plt.legend()
 plt.grid(True)
-plt.show()
+plt.savefig("plot_6.png")
+plt.close()
 
 # 7. Seat Usage Efficiency (EPS per Seat) by Vehicle Class
 seat_efficiency = df.groupby('vehclass_id').apply(lambda x: (x['netprice_usd'] / x['seats']).mean()).reset_index(name='eps_per_seat')
@@ -129,7 +136,8 @@ plt.title('Seat Usage Efficiency (EPS per Seat) by Vehicle Class')
 plt.xlabel('Vehicle Class ID')
 plt.ylabel('EPS per Seat (USD)')
 plt.grid(True)
-plt.show()
+plt.savefig("plot_7.png")
+plt.close()
 
 # 8. Top 3 Vehicle Classes Contributing to the Highest EPS in 2023
 top_eps_classes = grouped[grouped['year'] == 2023].nlargest(3, 'eps')
@@ -139,7 +147,8 @@ plt.title('Top 3 Vehicle Classes Contributing to the Highest EPS in 2023')
 plt.xlabel('Vehicle Class ID')
 plt.ylabel('Average EPS')
 plt.grid(True)
-plt.show()
+plt.savefig("plot_8.png")
+plt.close()
 
 # 9. Distribution of EPS by Vehicle Class in 2023
 plt.figure(figsize=(14, 8))
@@ -148,7 +157,8 @@ plt.title('Distribution of EPS by Vehicle Class in 2023')
 plt.xlabel('EPS')
 plt.ylabel('Frequency')
 plt.grid(True)
-plt.show()
+plt.savefig("plot_9.png")
+plt.close()
 
 # 10. Revenue Contribution by Vehicle Class
 revenue_contribution = grouped.groupby('vehclass_id')['total_usd'].sum().reset_index()
@@ -158,7 +168,8 @@ plt.title('Revenue Contribution by Vehicle Class')
 plt.xlabel('Vehicle Class ID')
 plt.ylabel('Total Revenue (USD)')
 plt.grid(True)
-plt.show()
+plt.savefig("plot_10.png")
+plt.close()
 
 # Summary of insights
 insights = [
@@ -174,6 +185,33 @@ insights = [
     "10. Revenue contribution by vehicle class gives insight into which classes are the most profitable."
 ]
 
-# Print insights
+# Initialize PDF
+pdf = FPDF()
+
+# Add a title page
+pdf.add_page()
+pdf.set_font("Arial", 'B', 16)
+pdf.cell(200, 10, txt="Hypothesis Testing: Impact of Vehicle Class on EPS", ln=True, align='C')
+
+# Add a page for insights
+pdf.add_page()
+pdf.set_font("Arial", size=12)
+pdf.cell(0, 10, txt="Insights Summary:", ln=True)
+pdf.ln(10)
+pdf.set_font("Arial", size=10)
+
 for i, insight in enumerate(insights, 1):
-    print(insight)
+    pdf.multi_cell(0, 10, f"{i}. {insight}")
+    pdf.ln(5)
+
+# Save each plot as an image and add to the PDF
+for i in range(1, 11):
+    image_path = f"plot_{i}.png"
+    pdf.add_page()
+    pdf.image(image_path, x=10, y=30, w=190)
+
+# Output the PDF
+pdf_output_path = "hypothesis_testing_results.pdf"
+pdf.output(pdf_output_path)
+
+print(f"PDF saved as {pdf_output_path}")

@@ -1,0 +1,42 @@
+Hypothesis: Impact of Vehicle Class on EPS
+
+Observation:
+Certain vehicle classes may contribute less to EPS (Earn Per Seat) due to various factors such as pricing strategies, increased competition, or shifts in customer preferences. For instance, lower-margin classes might attract more customers, but their popularity could lead to reduced overall profitability.
+
+Analysis:
+- EPS by Vehicle Class: By analyzing the EPS by vehicle class for different periods (e.g., 2019 vs. 2023), you can identify trends in profitability across different vehicle classes.
+- Revenue Contribution: Identifying which vehicle classes generate the most revenue can help prioritize focus areas for improvement.
+- Refund Impact: Understanding how refunds affect net revenue for each vehicle class can highlight potential issues in pricing or customer satisfaction.
+- Seat Usage Efficiency: Analyzing EPS per seat for each vehicle class can provide insights into how well seats are being utilized in terms of profitability.
+
+Recommendations:
+
+1. Introduce Premium Services:
+   - For vehicle classes with lower EPS, consider introducing premium services that could justify a higher price point. This could include features like more comfortable seating, better in-trip amenities, or faster travel times.
+   
+2. Upselling Strategies:
+   - Develop targeted upselling strategies to encourage customers to choose higher-margin vehicle classes. This could be done through marketing campaigns, loyalty programs, or offering bundled services at a discount.
+
+3. Review and Adjust Pricing Strategy:
+   - For vehicle classes that are underperforming in terms of EPS, review the pricing strategy. Consider adjusting prices to better reflect the value provided or align more closely with competitor offerings. This could involve raising prices where demand is strong or offering discounts to fill less popular services.
+
+4. Focus on Customer Preferences:
+   - Conduct surveys or gather feedback to understand why certain vehicle classes are more popular despite lower margins. Use this information to refine service offerings or to make strategic changes that could improve profitability without sacrificing customer satisfaction.
+
+5. Enhance Marketing Efforts for High-Margin Classes:
+   - Increase the visibility and appeal of high-margin vehicle classes through targeted marketing efforts. Highlight the benefits and unique features of these classes to attract more customers willing to pay a premium.
+
+6. Monitor Competition:
+   - Regularly monitor competitor pricing and service offerings in the vehicle classes that are underperforming. Adjust your offerings to remain competitive while still focusing on maximizing EPS.
+
+7. Optimize Seat Allocation:
+   - Analyze seat usage efficiency across vehicle classes. For classes with lower EPS per seat, consider strategies to optimize seat allocation, such as adjusting the number of seats available or offering special promotions to increase occupancy rates.
+
+8. Seasonal Adjustments:
+   - Explore the possibility of seasonal pricing adjustments or promotions based on the performance of vehicle classes throughout the year. This can help balance demand and profitability during peak and off-peak seasons.
+
+9. Invest in High-EPS Classes:
+   - Allocate resources and investments towards vehicle classes that consistently show high EPS. This could include expanding the fleet, enhancing the service quality, or offering additional perks that attract high-paying customers.
+
+10. Data-Driven Decision Making:
+    - Continuously monitor EPS and related metrics by vehicle class using real-time data analytics. Use this data to make informed decisions about service offerings, pricing, and marketing strategies to maximize profitability.
