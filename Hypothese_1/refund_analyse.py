@@ -206,10 +206,11 @@ pdf.multi_cell(0, 10, "1. Station-Specific Decline: Certain stations may show a 
                       "3. Vehicle Class Impact: Analyze which vehicle classes are contributing to the decline in EPS. "
                       "Adjust pricing, add value-added services, or promote higher-margin classes accordingly.\n\n"
                       "4. Country-Specific Trends: Tailor marketing efforts and pricing strategies to reflect "
-                      "regional demand differences by analyzing country-specific EPS trends.\n\n")
+                      "regional demand differences by analyzing country-specific EPS trends.\n\n"
+                      "5. Survey for gaining more detailed insights: https://forms.gle/GvGb62oUDZ2KMMGw6 ")
 
 # Save the PDF
-pdf_output_path = '12go_analysis_visualizations.pdf'
+pdf_output_path = 'hypo_1.pdf'
 pdf.output(pdf_output_path)
 
 pdf_output_path
